@@ -16,7 +16,7 @@ public class UserDAOImpl extends DBConnection implements UserDAO{
         ResultSet rs = stmt.executeQuery("SELECT * FROM user WHERE emailAddress='"+user.getEmailAddress()+"' AND password='"+user.getPassword()+"';");
        
         while(rs.next()) {
-            return new User(rs.getString(1),rs.getString(1),rs.getString(2));
+            return new User(rs.getString(2),rs.getString(3),rs.getString(4));
         }
 		return null;
 	}
@@ -37,14 +37,17 @@ public class UserDAOImpl extends DBConnection implements UserDAO{
 	public boolean doesUserExists(User user) throws SQLException, ClassNotFoundException {
 		Connection con = super.getConnection();
         Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT emailAddress FROM user WHERE emailAddress='"+user.getEmailAddress()+"';");
-        
+        ResultSet rs = stmt.executeQuery("SELECT COUNT(emailAddress) FROM user WHERE emailAddress='"+user.getEmailAddress()+"'");
+        int check = 0;
         while(rs.next()) {
-            if(rs.getString(0).equals(user.getEmailAddress())) {
-            	return true;
-            }
+            check = rs.getInt(1);
         }
-		return false;
+        super.closeConnection(con);
+		if(check>0) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 	
 }

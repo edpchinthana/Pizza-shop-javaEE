@@ -26,9 +26,15 @@
         <div id="description">
         <% //HttpSession session1 = request.getSession();
         	if((String)request.getAttribute("er")!=null){
-        		out.println(request.getAttribute("er").toString());
+        		out.println(
+        				request.getAttribute("er")
+        				);
+      
         	}
+        	
+        	
         %>	
+        
             <h1>Register Now!</h1>
             <form class="register-form" method="post" action="register">
                 <input name="displayName" type="text" placeholder="Display Name" required><br>
