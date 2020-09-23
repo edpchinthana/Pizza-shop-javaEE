@@ -24,11 +24,11 @@
         <img src="res/images/register_bg1.png">
         <div id="description">
             <h1>Register Now!</h1>
-            <form class="register-form">
-                <input type="text" placeholder="Display Name" required><br>
-                <input type="email" placeholder="Email Address" required><br>
-                <input type="password" placeholder="Password" required><br>
-                <input type="password" placeholder="Retype Password" required><br>
+            <form class="register-form" method="post" action="register">
+                <input name="displayName" type="text" placeholder="Display Name" required><br>
+                <input name="emailAddress" type="email" placeholder="Email Address" required><br>
+                <input name="password1" type="password" placeholder="Password" required><br>
+                <input name="password2" type="password" placeholder="Retype Password" required><br>
                 <input class="submit-button" type="submit"value="Register">
             </form>
         </div>

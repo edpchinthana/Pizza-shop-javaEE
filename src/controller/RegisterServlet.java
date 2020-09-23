@@ -7,12 +7,15 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.UserDAO;
+import dao.UserDAOImpl;
 import model.User;
 
 
 @WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+     private final UserDAO userDAO = new UserDAOImpl();
      
     /**
      * @see HttpServlet#HttpServlet()
@@ -38,8 +41,17 @@ public class RegisterServlet extends HttpServlet {
 		String emailAddress = request.getParameter("emailAddress").toString();
 		String password1 = request.getParameter("password1").toString();
 		String password2 = request.getParameter("password2").toString();
-		
+		System.out.println("huurreeh");
 		if(password1.equals(password2)) {
+			user.setDisplayName(displayName);
+			user.setEmailAddress(emailAddress);
+			user.setPassword(password1);
+			if(userDAO.register(user)) {
+				
+			}else {
+				
+			}
+		}else {
 			
 		}
 

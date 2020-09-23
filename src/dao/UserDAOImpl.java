@@ -1,8 +1,10 @@
 package dao;
 
+import java.sql.Connection;
+
 import model.User;
 
-public class UserDAOImpl implements UserDAO{
+public class UserDAOImpl extends DBConnection implements UserDAO{
 
 	@Override
 	public boolean login(User user) {
@@ -18,7 +20,8 @@ public class UserDAOImpl implements UserDAO{
 
 	@Override
 	public boolean register(User user) {
-		// TODO Auto-generated method stub
+		Connection con = super.getConnection();
+		
 		return false;
 	}
 	
