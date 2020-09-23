@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.*;
 
 import dao.UserDAO;
 import dao.UserDAOImpl;
@@ -51,12 +51,12 @@ public class LoginServlet extends HttpServlet {
 		try {
 			User loggedUser = userDAO.login(user);
 			if(loggedUser!=null) {
-                ObjectMapper objectMapper=new ObjectMapper();
-                String jsonInString = objectMapper.writeValueAsString(loggedUser);
-                Cookie loginCookie = new Cookie("user",jsonInString);
+//                ObjectMapper objectMapper=new ObjectMapper();
+//                String jsonInString = objectMapper.writeValueAsString(loggedUser);
+                Cookie loginCookie = new Cookie("user",loggedUser.getDisplayName());
 				loginCookie.setMaxAge(30*60);
 				response.addCookie(loginCookie);
-				response.sendRedirect("/pizzaShop/");
+				response.sendRedirect("/pizzaShop/promotions.jsp");
 			}else {
 				request.setAttribute("er", "Login failed please try again!");
 				request.getRequestDispatcher("/login.jsp").forward(request, response);
