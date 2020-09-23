@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 23, 2020 at 03:12 PM
+-- Generation Time: Sep 23, 2020 at 03:33 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.3.13
 
@@ -33,14 +33,6 @@ CREATE TABLE `user` (
   `emailAddress` varchar(200) NOT NULL,
   `password` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`displayName`, `emailAddress`, `password`) VALUES
-('Chinthana', 'aa@aa.com', '123'),
-('Pasindu', 'edpchinthana@outlook.com', 'aaa');
 
 --
 -- Indexes for dumped tables
