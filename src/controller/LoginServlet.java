@@ -61,12 +61,10 @@ public class LoginServlet extends HttpServlet {
 			try {
 				User loggedUser = userDAO.login(user);
 				if(loggedUser!=null) {
-//	                ObjectMapper objectMapper=new ObjectMapper();
-//	                String jsonInString = objectMapper.writeValueAsString(loggedUser);
 	                Cookie loginCookie = new Cookie("user",loggedUser.getDisplayName());
 					loginCookie.setMaxAge(30*60);
 					response.addCookie(loginCookie);
-					response.sendRedirect("/pizzaShop/promotions.jsp");
+					response.sendRedirect("/pizzaShop/promotions");
 				}else {
 					request.setAttribute("er", "Login failed please try again!");
 					request.getRequestDispatcher("/login.jsp").forward(request, response);
