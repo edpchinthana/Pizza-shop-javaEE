@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -46,16 +48,21 @@ public class RegisterServlet extends HttpServlet {
 			user.setDisplayName(displayName);
 			user.setEmailAddress(emailAddress);
 			user.setPassword(password1);
-			if(userDAO.register(user)) {
-				
-			}else {
-				
+			try {
+				if(userDAO.register(user)) {
+					 response.sendRedirect("/pizzaShop/");
+				}else {
+					
+				}
+			} catch (SQLException | ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}else {
 			
 		}
 
-		doGet(request, response);
+		//doGet(request, response);
 	}
 
 }
