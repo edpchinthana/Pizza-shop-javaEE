@@ -5,6 +5,9 @@ public class User {
 	private String displayName;
 	private String emailAddress;
 	
+	public User() {
+		
+	}
 	
 	public User(int id, String displayName, String emailAddress) {
 		super();

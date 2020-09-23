@@ -7,19 +7,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class Register
- */
-@WebServlet("/pizzaShop/")
+import model.User;
+
+
+@WebServlet("/register")
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+     
     /**
      * @see HttpServlet#HttpServlet()
      */
     public RegisterServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -34,7 +33,16 @@ public class RegisterServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		User user = new User();
+		String displayName = request.getParameter("displayName").toString();
+		String emailAddress = request.getParameter("emailAddress").toString();
+		String password1 = request.getParameter("password1").toString();
+		String password2 = request.getParameter("password2").toString();
+		
+		if(password1.equals(password2)) {
+			
+		}
+
 		doGet(request, response);
 	}
 
