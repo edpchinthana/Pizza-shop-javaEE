@@ -27,7 +27,7 @@
 					}
 				}
 				if(check==1){
-					out.println("<li style='padding-left:20vw'>"+displayName+"</li><li style='padding-right:5vw'><a href='logout'>Logout</a></li>");
+					response.sendRedirect("/pizzaShop/");
 				}else{
 					out.println("<li><a href='register.jsp'>Register</a></li><li><a href='login.jsp'>Login</a></li>");
 				}

@@ -26,7 +26,7 @@
 					}
 				}
 				if(check==1){
-					out.println("<li style='padding-left:20vw'>"+displayName+"</li><li style='padding-right:5vw'><a href='logout'>Logout</a></li>");
+					out.println("<li style='padding-left:20vw;padding-right:10px;'><img src='res/images/profile.png' width='16px' style='padding-top:0px; margin-right:10px;'>"+displayName+"</li><li style='padding-right:5vw'><a href='logout'>Logout</a></li>");
 				}else{
 					out.println("<li><a href='register.jsp'>Register</a></li><li><a href='login.jsp'>Login</a></li>");
 				}

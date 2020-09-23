@@ -35,38 +35,49 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.sendRedirect("/pizzaShop/");
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		User user = new User();
-		String emailAddress = request.getParameter("emailAddress").toString();
-		String password = request.getParameter("password").toString();
-		user.setEmailAddress(emailAddress);
-		user.setPassword(password);
-		try {
-			User loggedUser = userDAO.login(user);
-			if(loggedUser!=null) {
-//                ObjectMapper objectMapper=new ObjectMapper();
-//                String jsonInString = objectMapper.writeValueAsString(loggedUser);
-                Cookie loginCookie = new Cookie("user",loggedUser.getDisplayName());
-				loginCookie.setMaxAge(30*60);
-				response.addCookie(loginCookie);
-				response.sendRedirect("/pizzaShop/promotions.jsp");
-			}else {
-				request.setAttribute("er", "Login failed please try again!");
-				request.getRequestDispatcher("/login.jsp").forward(request, response);
+		Cookie[] cookies = request.getCookies();
+		int check = 0;
+		for(Cookie cookie : cookies){
+			if(cookie.getName().equals("user")) {
+				check=1;
 			}
-		} catch (SQLException e) {
-			request.setAttribute("er", "Database connection failed!");
-			request.getRequestDispatcher("/login.jsp").forward(request, response);
-			e.printStackTrace();
 		}
-
+		
+		if(check==1) {
+			response.sendRedirect("/pizzaShop/");
+		}else {
+			User user = new User();
+			String emailAddress = request.getParameter("emailAddress").toString();
+			String password = request.getParameter("password").toString();
+			user.setEmailAddress(emailAddress);
+			user.setPassword(password);
+			try {
+				User loggedUser = userDAO.login(user);
+				if(loggedUser!=null) {
+//	                ObjectMapper objectMapper=new ObjectMapper();
+//	                String jsonInString = objectMapper.writeValueAsString(loggedUser);
+	                Cookie loginCookie = new Cookie("user",loggedUser.getDisplayName());
+					loginCookie.setMaxAge(30*60);
+					response.addCookie(loginCookie);
+					response.sendRedirect("/pizzaShop/promotions.jsp");
+				}else {
+					request.setAttribute("er", "Login failed please try again!");
+					request.getRequestDispatcher("/login.jsp").forward(request, response);
+				}
+			} catch (SQLException e) {
+				request.setAttribute("er", "Database connection failed!");
+				request.getRequestDispatcher("/login.jsp").forward(request, response);
+				e.printStackTrace();
+			}
+		}
+		
 	}
 
 }
