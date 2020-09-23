@@ -1,5 +1,9 @@
 package dao;
 
-public interface UserDAO {
+import model.User;
 
+public interface UserDAO {
+	boolean login(User user);
+	boolean logout(User user);
+	boolean register(User user);
 }
