@@ -10,15 +10,15 @@ import model.User;
 public class UserDAOImpl extends DBConnection implements UserDAO{
 
 	@Override
-	public boolean login(User user) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean logout(User user) {
-		// TODO Auto-generated method stub
-		return false;
+	public User login(User user) throws SQLException {
+		Connection con = super.getConnection();
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT * FROM user WHERE emailAddress='"+user.getEmailAddress()+"' AND password='"+user.getPassword()+"';");
+       
+        while(rs.next()) {
+            return new User(rs.getString(1),rs.getString(1),rs.getString(2));
+        }
+		return null;
 	}
 
 	@Override

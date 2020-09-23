@@ -24,9 +24,9 @@
             <img src="res/images/login_bg1.jpg">
             <div id="description">
                 <h1>Welcome Back!</h1>
-                <form class="login-form">
-                    <input type="email" placeholder="Email Address" required><br>
-                    <input type="password" placeholder="Password" required><br>
+                <form class="login-form" method="post" action="login">
+                    <input name="emailAddress" type="email" placeholder="Email Address" required><br>
+                    <input name="password" type="password" placeholder="Password" required><br>
                     <input class="submit-button" type="submit"value="Login">
                 </form>
             </div>
