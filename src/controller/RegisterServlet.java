@@ -43,7 +43,7 @@ public class RegisterServlet extends HttpServlet {
 		String emailAddress = request.getParameter("emailAddress").toString();
 		String password1 = request.getParameter("password1").toString();
 		String password2 = request.getParameter("password2").toString();
-		System.out.println("huurreeh");
+
 		if(password1.equals(password2)) {
 			user.setDisplayName(displayName);
 			user.setEmailAddress(emailAddress);

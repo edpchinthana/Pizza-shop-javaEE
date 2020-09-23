@@ -18,7 +18,7 @@
             <li><a href="index.jsp">Bruno's Pizzeria</a></li>
             <li><a href="order.jsp">Order Now</a></li>
             <li><a href="register.jsp">Register</a></li>
-            <li>Features</li>
+            <li><a href="login.jsp">Login</a></li>
         </ul>
     </div>
 
