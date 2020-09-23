@@ -15,10 +15,23 @@
     <!--Navigation bar-->
     <div id="navigationBar" class="navbar-active">
         <ul>
-            <li><a href="index.jsp">Bruno's Pizzeria</a></li>
-            <li><a href="order.jsp">Order Now</a></li>
-            <li><a href="register.jsp">Register</a></li>
-            <li><a href="login.jsp">Login</a></li>
+                    <li><a href="index.jsp">Bruno's Pizzeria</a></li>
+                    <li><a href="promotions.jsp">Promotions</a></li>
+           	<%Cookie[] cookies = request.getCookies();
+				int check = 0;
+				String displayName = null;
+				for(Cookie cookie : cookies){
+					if(cookie.getName().equals("user")) {
+						check=1;
+						displayName = cookie.getValue();
+					}
+				}
+				if(check==1){
+					out.println("<li style='padding-left:20vw'>"+displayName+"</li><li style='padding-right:5vw'><a href='logout'>Logout</a></li>");
+				}else{
+					out.println("<li><a href='register.jsp'>Register</a></li><li><a href='login.jsp'>Login</a></li>");
+				}
+				%>
         </ul>
     </div>
     <div class="panel" id="description-wrapper">
