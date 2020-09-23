@@ -38,6 +38,7 @@
                 <div class="promotions">
                     <h1>Promotions</h1>
                     <div class="pizza-row">
+                    
                         <div class="card">
                             <img src="res/images/pizza.png" alt="pizza">
                             <h3 class="item-name">Double Cheese</h3>
