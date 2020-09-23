@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="model.Item, java.util.List"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +15,7 @@
             <div id="navigationBar"class="navbar-active">
                 <ul>
                     <li><a href="index.jsp">Bruno's Pizzeria</a></li>
-                    <li><a href="promotions.jsp">Promotions</a></li>
+                    <li><a href="promotions">Promotions</a></li>
            	<%Cookie[] cookies = request.getCookies();
 				int check = 0;
 				String displayName = null;
@@ -38,67 +38,23 @@
                 <div class="promotions">
                     <h1>Promotions</h1>
                     <div class="pizza-row">
-                    
-                        <div class="card">
-                            <img src="res/images/pizza.png" alt="pizza">
-                            <h3 class="item-name">Double Cheese</h3>
-                            <h2 class="price">Rs 900</h2>
-                        </div>
-                        <div class="card">
-                            <img src="res/images/pizza.png" alt="pizza">
-                            <h3 class="item-name">Chicken Bacon</h3>
-                            <h2 class="price">Rs 700</h2>
-                        </div>
-                        <div class="card">
-                            <img src="res/images/pizza.png" alt="pizza">
-                            <h3 class="item-name">Devilled Chicken</h3>
-                            <h2 class="price">Rs 950</h2>
-                        </div>
-                        <div class="card">
-                            <img src="res/images/pizza.png" alt="pizza">
-                            <h3 class="item-name">Cheese Lovers</h3>
-                            <h2 class="price">Rs 940</h2>
-                        </div>
-                        <div class="card">
-                            <img src="res/images/pizza.png" alt="pizza">
-                            <h3 class="item-name">Tandoori chicken</h3>
-                            <h2 class="price">Rs 900</h2>
-                        </div>
-                        <div class="card">
-                            <img src="res/images/pizza.png" alt="pizza">
-                            <h3 class="item-name">Sausages Delight</h3>
-                            <h2 class="price">Rs 850</h2>
-                        </div>
-                        <div class="card">
-                            <img src="res/images/pizza.png" alt="pizza">
-                            <h3 class="item-name">Black Chicken</h3>
-                            <h2 class="price">Rs 950</h2>
-                        </div>
-                        <div class="card">
-                            <img src="res/images/pizza.png" alt="pizza">
-                            <h3 class="item-name">BBQ Chicken</h3>
-                            <h2 class="price">Rs 920</h2>
-                        </div>
-                        <div class="card">
-                            <img src="res/images/pizza.png" alt="pizza">
-                            <h3 class="item-name">Chicken Hawaiian</h3>
-                            <h2 class="price">Rs 800</h2>
-                        </div>
-                        <div class="card">
-                            <img src="res/images/pizza.png" alt="pizza">
-                            <h3 class="item-name">Hot Butter Cuttlefish</h3>
-                            <h2 class="price">Rs 750</h2>
-                        </div>
-                        <div class="card">
-                            <img src="res/images/pizza.png" alt="pizza">
-                            <h3 class="item-name">Butter Chicken</h3>
-                            <h2 class="price">Rs 1000</h2>
-                        </div>
-                        <div class="card">
-                            <img src="res/images/pizza.png" alt="pizza">
-                            <h3 class="item-name">Hot & Spicy Chicken</h3>
-                            <h2 class="price">Rs 950</h2>
-                        </div>
+                    	<% 
+                    	if(request.getAttribute("itemList")!=null){
+                    		List<Item> itemList = (List<Item>) request.getAttribute("itemList"); 
+                    		if(itemList.size()>0){
+                    			for (Item item: itemList) {  
+                        			%>
+                        			<div class="card">
+                                <img src="<%out.println(item.getPhotoUrl());%>" alt="pizza">
+                                <h3 class="item-name"><%out.println(item.getItemName());%></h3>
+                                <h2 class="price"><%out.println(item.getPrice());%></h2>
+                            </div>                   			
+                        		<%}
+                    		}else{
+                    			out.println("No item found.");
+                    		}
+                    	}
+                    	%>
                     </div>
                 </div>
             </div>

@@ -16,7 +16,7 @@
     <div id="navigationBar" class="navbar-active">
         <ul>
                     <li><a href="index.jsp">Bruno's Pizzeria</a></li>
-                    <li><a href="promotions.jsp">Promotions</a></li>
+                    <li><a href="promotions">Promotions</a></li>
            	<%Cookie[] cookies = request.getCookies();
 				int check = 0;
 				String displayName = null;
