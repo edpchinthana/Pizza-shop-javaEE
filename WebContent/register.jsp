@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <meta charset="UTF-8">
     <link rel="icon" type="image/png" href="./res/images/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,6 +24,11 @@
     <div class="panel" id="description-wrapper">
         <img src="res/images/register_bg1.png">
         <div id="description">
+        <% //HttpSession session1 = request.getSession();
+        	if((String)request.getAttribute("er")!=null){
+        		out.println(request.getAttribute("er").toString());
+        	}
+        %>	
             <h1>Register Now!</h1>
             <form class="register-form" method="post" action="register">
                 <input name="displayName" type="text" placeholder="Display Name" required><br>

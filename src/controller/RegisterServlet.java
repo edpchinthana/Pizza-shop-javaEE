@@ -52,14 +52,20 @@ public class RegisterServlet extends HttpServlet {
 				if(userDAO.register(user)) {
 					 response.sendRedirect("/pizzaShop/");
 				}else {
-					
+					request.setAttribute("er", "error happend");
+					response.sendRedirect("/pizzaShop/register.jsp");
 				}
 			} catch (SQLException | ClassNotFoundException e) {
-				// TODO Auto-generated catch block
+				request.setAttribute("er", "error happend");
+				response.sendRedirect("/pizzaShop/register.jsp");
 				e.printStackTrace();
 			}
 		}else {
-			
+		    response.setContentType("text/html");
+			request.setAttribute("er", "Passwords did not match");
+		    //request.getRequestDispatcher("/pizzaShop/register.jsp").forward(request, response);
+
+			response.sendRedirect("/pizzaShop/register.jsp");
 		}
 
 		//doGet(request, response);
