@@ -58,10 +58,12 @@ public class LoginServlet extends HttpServlet {
 				response.addCookie(loginCookie);
 				response.sendRedirect("/pizzaShop/");
 			}else {
-				
+				request.setAttribute("er", "Login failed please try again!");
+				request.getRequestDispatcher("/login.jsp").forward(request, response);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			request.setAttribute("er", "Database connection failed!");
+			request.getRequestDispatcher("/login.jsp").forward(request, response);
 			e.printStackTrace();
 		}
 

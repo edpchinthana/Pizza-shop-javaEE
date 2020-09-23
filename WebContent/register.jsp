@@ -24,15 +24,10 @@
     <div class="panel" id="description-wrapper">
         <img src="res/images/register_bg1.png">
         <div id="description">
-        <% //HttpSession session1 = request.getSession();
+        <% 
         	if((String)request.getAttribute("er")!=null){
-        		out.println(
-        				request.getAttribute("er")
-        				);
-      
+        		out.println(request.getAttribute("er"));
         	}
-        	
-        	
         %>	
         
             <h1>Register Now!</h1>

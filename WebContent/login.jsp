@@ -23,6 +23,11 @@
         <div class="panel" id="description-wrapper">
             <img src="res/images/login_bg1.jpg">
             <div id="description">
+                    <% 
+        	if((String)request.getAttribute("er")!=null){
+        		out.println(request.getAttribute("er"));
+        	}
+        %>	
                 <h1>Welcome Back !</h1>
                 <form class="login-form" method="post" action="login">
                     <input name="emailAddress" type="email" placeholder="Email Address" required><br>

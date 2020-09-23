@@ -64,6 +64,7 @@ public class RegisterServlet extends HttpServlet {
 			request.setAttribute("er", "Passwords did not match");
 			request.getRequestDispatcher("/register.jsp").forward(request, response);
 		}
+
 	}
 
 }

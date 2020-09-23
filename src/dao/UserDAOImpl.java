@@ -16,7 +16,7 @@ public class UserDAOImpl extends DBConnection implements UserDAO{
         ResultSet rs = stmt.executeQuery("SELECT * FROM user WHERE emailAddress='"+user.getEmailAddress()+"' AND password='"+user.getPassword()+"';");
        
         while(rs.next()) {
-            return new User(rs.getString(2),rs.getString(3),rs.getString(4));
+            return new User(rs.getString(1),rs.getString(2),rs.getString(3));
         }
 		return null;
 	}
